@@ -15,7 +15,7 @@ public class Restaurant {
 
 //  Getters and setters for the fields
 
-    public String getId() {
+    public String getRestaurantId() {
         return id;
     }
 
