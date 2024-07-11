@@ -40,4 +40,18 @@ public class CustomerRepository {
                 .findFirst();
     }
 
+    public Optional<Customer> updateCustomer(Customer customerToBeUpdated){
+        return this.customerList.stream().filter(customer -> customer.getCustomerId().equals(customerToBeUpdated.getCustomerId()))
+                                            .findFirst()
+                                            .map(customer -> {
+                                                customer.setCustomerName(customerToBeUpdated.getCustomerName())
+                                                        .setCustomerEmail(customerToBeUpdated.getCustomerEmail())
+                                                        .setCustomerPassword(customerToBeUpdated.getCustomerPassword());
+                                                return customer;
+                                            });
+    }
+
+    public void deleteCustomer(Customer customer){
+        this.customerList.remove(customer);
+    }
 }
