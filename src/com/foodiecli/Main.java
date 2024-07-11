@@ -3,6 +3,7 @@ package com.foodiecli;
 import com.foodiecli.factory.Factory;
 import com.foodiecli.model.Customer;
 import com.foodiecli.repository.CustomerRepository;
+import com.foodiecli.ui.Menu;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public class Main {
         dishes.forEach(System.out::println);*/
 
 
-        CustomerRepository customerRepository = Factory.getCustomerRepository();
+        /*CustomerRepository customerRepository = Factory.getCustomerRepository();
 
         List<Customer> customerList = customerRepository.getCustomerList();
         System.out.println("Customer List");
@@ -54,6 +55,8 @@ public class Main {
         System.out.println("\nGetting Customer by Email :" + email);
         findCustomer.ifPresentOrElse(System.out::println,
                             ()-> System.out.println("Customer not found with Email : " + email));
-
+*/
+        Menu menu = new Menu();
+        menu.displayMainMenu();
     }
 }
