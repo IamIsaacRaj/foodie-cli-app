@@ -2,6 +2,7 @@ package com.foodiecli.factory;
 
 import com.foodiecli.repository.CustomerRepository;
 import com.foodiecli.repository.DishRepository;
+import com.foodiecli.repository.RestaurantRepository;
 import com.foodiecli.util.CsvReader;
 
 public class Factory {
@@ -17,12 +18,18 @@ public class Factory {
     public static DishRepository getDishRepository(){
         return Holder.DISH_REPOSITORY;
     }
+
+    public static RestaurantRepository getRestaurantRepository(){
+        return Holder.RESTAURANT_REPOSITORY;
+    }
     private static class Holder {
         private static final CsvReader CSV_READER = new CsvReader();
 
         private static final CustomerRepository CUSTOMER_REPOSITORY = new CustomerRepository();
 
         private static final DishRepository DISH_REPOSITORY = new DishRepository();
+
+        private static final RestaurantRepository RESTAURANT_REPOSITORY = new RestaurantRepository();
     }
 }
 
