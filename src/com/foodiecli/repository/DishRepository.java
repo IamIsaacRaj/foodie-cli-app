@@ -3,7 +3,6 @@ package com.foodiecli.repository;
 import com.foodiecli.factory.Factory;
 import com.foodiecli.model.Dish;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,22 +22,22 @@ public class DishRepository {
         return dish;
     }
 
-    public Optional<Dish> getDishById(String id){
+    public Optional<Dish> findDishById(String id){
         return this.dishList.stream()
                             .filter(dish -> dish.getDishId().equals(id))
                             .findFirst();
     }
 
-    public Optional<Dish> updateDish(Dish dishToBeUpdated){
-        return this.dishList.stream()
-                            .filter(dish -> dish.getDishId().equals(dishToBeUpdated.getDishId()))
-                            .findFirst()
-                            .map(dish -> {
-                               dish.setDishName(dishToBeUpdated.getDishName())
-                                   .setDishDescription(dishToBeUpdated.getDishDescription())
-                                   .setDishPrice(dishToBeUpdated.getDishPrice());
-                               return dish;
-                            });
+    public Dish updateDish(Dish dishToBeUpdated){
+        Optional<Dish> dishOptional = this.dishList.stream().filter(dish -> dish.getDishId().equals(dishToBeUpdated.getDishId()))
+                .findFirst()
+                .map(dish -> {
+                    dish.setDishName(dishToBeUpdated.getDishName())
+                        .setDishPrice(dishToBeUpdated.getDishPrice())
+                        .setDishDescription(dishToBeUpdated.getDishDescription());
+                return dish;
+                });
+        return dishOptional.orElse(null);
     }
 
     public void deleteDish(Dish dish){
