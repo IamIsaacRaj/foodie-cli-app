@@ -23,16 +23,17 @@ public class RestaurantRepository {
                 .findFirst();
     }
 
-    public Optional<Restaurant> updateRestaurant(Restaurant restaurantToBeUpdated){
-        return this.restaurantList.stream()
+    public Restaurant updateRestaurant(Restaurant restaurantToBeUpdated){
+        Optional<Restaurant> restaurantOptional = this.restaurantList.stream()
                 .filter(restaurant -> restaurant.getRestaurantId().equals(restaurantToBeUpdated.getRestaurantId()))
                 .findFirst()
                 .map(restaurant -> {
                     restaurant.setRestaurantName(restaurantToBeUpdated.getName())
-                            .setRestaurantMenu(restaurantToBeUpdated.getMenu())
-                            .setRestaurantAddress(restaurantToBeUpdated.getAddress());
+                            .setRestaurantAddress(restaurantToBeUpdated.getAddress())
+                            .setRestaurantMenu(restaurantToBeUpdated.getMenu());
                     return restaurant;
                 });
+        return restaurantOptional.orElse(null);
     }
 
     public  void deleteRestaurant(Restaurant restaurant){
