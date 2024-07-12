@@ -21,13 +21,13 @@ public class CustomerRepository {
         return customer;
     }
 
-    public Optional<Customer> getCustomerById(String id){
+    public Optional<Customer> findCustomerById(String id){
         return this.customerList.stream()
                     .filter(customer -> customer.getCustomerId().equals(id))
                     .findFirst();
     }
 
-    public Optional<Customer> getCustomerByEmail(String email){
+    public Optional<Customer> findCustomerByEmail(String email){
         return this.customerList.stream()
                     .filter(customer -> customer.getCustomerEmail().equalsIgnoreCase(email))
                     .findFirst();
@@ -40,15 +40,18 @@ public class CustomerRepository {
                 .findFirst();
     }
 
-    public Optional<Customer> updateCustomer(Customer customerToBeUpdated){
-        return this.customerList.stream().filter(customer -> customer.getCustomerId().equals(customerToBeUpdated.getCustomerId()))
-                                            .findFirst()
-                                            .map(customer -> {
-                                                customer.setCustomerName(customerToBeUpdated.getCustomerName())
-                                                        .setCustomerEmail(customerToBeUpdated.getCustomerEmail())
-                                                        .setCustomerPassword(customerToBeUpdated.getCustomerPassword());
-                                                return customer;
-                                            });
+    public Customer updateCustomer(Customer customerToBeUpdated){
+        Optional<Customer> updateCustomer =  this.customerList.stream()
+                .filter(customer -> customer.getCustomerId().equals(customerToBeUpdated.getCustomerId()))
+                .findFirst()
+                .map(customer -> {
+                    customer.setCustomerName(customerToBeUpdated.getCustomerName())
+                            .setCustomerEmail(customerToBeUpdated.getCustomerEmail())
+                            .setCustomerPassword(customerToBeUpdated.getCustomerPassword());
+
+                    return customer;
+                });
+        return updateCustomer.orElse(null);
     }
 
     public void deleteCustomer(Customer customer){
