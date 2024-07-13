@@ -30,6 +30,7 @@ public class CustomerMenu extends Menu{
                 System.out.println("3. Search Customer");
                 System.out.println("4. Display All Customers");
                 System.out.println("5. Update Customer Details");
+                System.out.println("6. Delete Customer");
                 System.out.println("7. Exit");
                 System.out.println("Please Enter Your Choice 1 - 7");
 
@@ -49,7 +50,7 @@ public class CustomerMenu extends Menu{
                 }
             }
         }catch (Exception e){
-            System.out.println("Some Internal Error Occurred. Please Enter the valid input from 1-7");
+            System.out.println("Some Internal Error Occurred. Please try Again..!");
             displayMenu();
         }
     }

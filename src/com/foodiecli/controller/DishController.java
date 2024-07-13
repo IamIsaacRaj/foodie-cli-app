@@ -30,7 +30,7 @@ public class DishController {
         return this.dishService.updateDish(dish);
     }
 
-    public void delete(String id) throws DishNotFoundException{
-        this.dishService.delete(id);
+    public void deleteDish(String id) throws DishNotFoundException{
+        this.dishService.deleteDish(id);
     }
 }
