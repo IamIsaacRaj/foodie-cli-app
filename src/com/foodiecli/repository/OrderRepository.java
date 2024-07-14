@@ -28,4 +28,23 @@ public class OrderRepository {
                              .findFirst();
 
     }
+
+    public Order updateOrder(Order orderToBeUpdated) {
+        Optional<Order> optionalOrder = this.orderList.stream()
+                .filter(order -> order.getOrderId().equals(orderToBeUpdated.getOrderId()))
+                .findFirst()
+                .map(order -> {
+                    order.setCustomer(orderToBeUpdated.getCustomer())
+                            .setRestaurant(orderToBeUpdated.getRestaurant())
+                            .setOrderDate(orderToBeUpdated.getOrderDate())
+                            .setOrderDishes(orderToBeUpdated.getOrderDishes())
+                            .setOrderPrice(orderToBeUpdated.getOrderPrice());
+                    return order;
+                });
+        return optionalOrder.orElse(null);
+    }
+
+    public void deleteOrder(Order order) {
+        this.orderList.remove(order);
+    }
 }
