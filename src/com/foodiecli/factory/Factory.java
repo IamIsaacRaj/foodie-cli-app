@@ -2,12 +2,15 @@ package com.foodiecli.factory;
 
 import com.foodiecli.controller.CustomerController;
 import com.foodiecli.controller.DishController;
+import com.foodiecli.controller.OrderController;
 import com.foodiecli.controller.RestaurantController;
 import com.foodiecli.repository.CustomerRepository;
 import com.foodiecli.repository.DishRepository;
+import com.foodiecli.repository.OrderRepository;
 import com.foodiecli.repository.RestaurantRepository;
 import com.foodiecli.service.CustomerServiceImp;
 import com.foodiecli.service.DishServiceImp;
+import com.foodiecli.service.OrderServiceImp;
 import com.foodiecli.service.RestaurantServiceImp;
 import com.foodiecli.util.CsvReader;
 
@@ -50,6 +53,17 @@ public class Factory {
     public static RestaurantController getRestaurantController(){
         return Holder.RESTAURANT_CONTROLLER;
     }
+
+    public static OrderRepository getOrderRepository(){
+        return Holder.ORDER_REPOSITORY;
+    }
+    public static OrderServiceImp getOrderService() {
+        return Holder.ORDER_SERVICE;
+    }
+
+    public static OrderController getOrderController(){
+        return Holder.ORDER_CONTROLLER;
+    }
     private static class Holder {
         private static final CsvReader CSV_READER = new CsvReader();
 
@@ -64,6 +78,10 @@ public class Factory {
         private static final RestaurantRepository RESTAURANT_REPOSITORY = new RestaurantRepository();
         private static final RestaurantServiceImp RESTAURANT_SERVICE = new RestaurantServiceImp(RESTAURANT_REPOSITORY);
         private static final RestaurantController RESTAURANT_CONTROLLER = new RestaurantController(RESTAURANT_SERVICE);
+
+        private static final OrderRepository ORDER_REPOSITORY = new OrderRepository();
+        private static final OrderServiceImp ORDER_SERVICE = new OrderServiceImp(ORDER_REPOSITORY);
+        private static final OrderController ORDER_CONTROLLER = new OrderController(ORDER_SERVICE);
     }
 }
 
