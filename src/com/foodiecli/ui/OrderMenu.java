@@ -71,7 +71,7 @@ public class OrderMenu extends Menu {
         printDashLine();
         orderList.forEach(order -> {
             String dishNames = order.getOrderDishes().stream().map(Dish::getDishName).collect(Collectors.joining(","));
-            System.out.printf("%-10s %-20s %-30s %-60s %-20s %-10s\n\n", order.getOrderId(), order.getCustomer(), order.getRestaurant(), dishNames, order.getOrderDate(), order.getOrderPrice());
+            System.out.printf("%-10s %-20s %-30s %-60s %-20s %-10s\n\n", order.getOrderId(), order.getCustomer().getCustomerName(), order.getRestaurant().getName(), dishNames, order.getOrderDate(), order.getOrderPrice());
         });
         System.out.println("\n\n");
     }
@@ -81,7 +81,7 @@ public class OrderMenu extends Menu {
         displayMenuHeader("Order Details");
         System.out.printf("%-10s %-20s %-30s %-60s %-20s %-10s \n", "ID", "CUSTOMER NAME", "RESTAURANT NAME", "ITEMS", "ORDER DATE", "PRICE");
         printDashLine();
-        System.out.printf("%-10s %-20s %-30s %-60s %-20s %-10s\n\n", order.getOrderId(), order.getCustomer(), order.getRestaurant(), dishNames, order.getOrderDate(), order.getOrderPrice());
+        System.out.printf("%-10s %-20s %-30s %-60s %-20s %-10s\n\n", order.getOrderId(), order.getCustomer().getCustomerName(), order.getRestaurant().getName(), dishNames, order.getOrderDate(), order.getOrderPrice());
     }
 
     private void newOrderForm() throws DishNotFoundException {
@@ -238,6 +238,7 @@ public class OrderMenu extends Menu {
             System.out.println("Enter Order Id : ");
             String id = scanner.nextLine();
             this.orderController.deleteOrder(id);
+            System.out.println("Order deleted Successfully");
         } catch (OrderNotFoundException e) {
             System.out.println(e.getMessage());
         }
