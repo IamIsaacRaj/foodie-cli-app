@@ -1,5 +1,6 @@
 package com.foodiecli.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -10,18 +11,18 @@ public class Order {
     private Restaurant restaurant;
     private List<Dish> dishes;
     private double price;
-    private Date orderDate;
+    private LocalDate orderDate;
 
 //  Constructor
 
-    public Order(String id, Customer customer, Restaurant restaurant, List<Dish> dishes, double price, Date orderDate) {
-        this.id = id;
-        this.customer = customer;
-        this.restaurant = restaurant;
-        this.dishes = dishes;
-        this.price = price;
-        this.orderDate = orderDate;
-    }
+//    public Order(String id, Customer customer, Restaurant restaurant, List<Dish> dishes, double price, Date orderDate) {
+//        this.id = id;
+//        this.customer = customer;
+//        this.restaurant = restaurant;
+//        this.dishes = dishes;
+//        this.price = price;
+//        this.orderDate = orderDate;
+//    }
 
 //  Getters and setters for the fields
 
@@ -70,11 +71,11 @@ public class Order {
         return this;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public Order setOrderDate(Date orderDate) {
+    public Order setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
         return this;
     }
@@ -114,4 +115,6 @@ public class Order {
                 ", orderDate=" + orderDate +
                 '}';
     }
+
+
 }

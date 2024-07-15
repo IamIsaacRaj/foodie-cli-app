@@ -40,9 +40,9 @@ public class Menu {
                 int input = scanner.nextInt();
                 switch (input){
                     case 1 -> new CustomerMenu().displayMenu();
-//                    case 2 -> new RestaurantMenu().displayMenu();
-//                    case 3 -> new DishMenu().displayMenu();
-//                    case 4 -> new OrderMenu().displayMenu();
+                    case 2 -> new RestaurantMenu().displayMenu();
+                    case 3 -> new DishesMenu().displayMenu();
+                    case 4 -> new OrderMenu().displayMenu();
                     case 5 -> {
                         System.out.println("Thanks for choosing Foodie App,See you again..!");
                     }
