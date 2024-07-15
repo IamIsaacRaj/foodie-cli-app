@@ -1,5 +1,6 @@
 package com.foodiecli.repository;
 
+import com.foodiecli.factory.Factory;
 import com.foodiecli.model.Restaurant;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public class RestaurantRepository {
     private List<Restaurant> restaurantList;
 
     public List<Restaurant> restaurantList() {
-        return this.restaurantList;
+        return this.restaurantList = Factory.getCsvReader().readRestaurantsFromCSV();
     }
 
     public Restaurant save(Restaurant restaurant){
